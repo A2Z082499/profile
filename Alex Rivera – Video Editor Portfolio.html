@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alex Rivera – Video Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F5EF;--ink:#101010;--mute:#6f6f6b;--line:#dcdad2;--band:#101010;--band-ink:#fff;--btn:#101010;--btn-ink:#fff;--card:#fff;
+--sans:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e0e;--ink:#F3F1EA;--mute:#9a9a94;--line:#2a2a28;--band:#F3F1EA;--band-ink:#101010;--btn:#F3F1EA;--btn-ink:#101010;--card:#1a1a19;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e0e0e;--ink:#F3F1EA;--mute:#9a9a94;--line:#2a2a28;--band:#F3F1EA;--band-ink:#101010;--btn:#F3F1EA;--btn-ink:#101010;--card:#1a1a19;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.lbl{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{display:flex;align-items:center;gap:10px;background:var(--card);padding:8px 16px 8px 8px;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.07);text-decoration:none;font-weight:500;letter-spacing:.04em}
+.brand b{width:30px;height:30px;border-radius:9px;background:var(--btn);color:var(--btn-ink);display:grid;place-items:center;font-size:.9rem}
+.pill{display:flex;gap:8px;background:var(--card);padding:10px 14px;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.07)}
+.pill a{text-decoration:none;text-align:center;padding:2px 16px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);line-height:1.5}
+.pill a b{display:block;font-size:.66rem;font-weight:700;color:var(--ink);letter-spacing:.18em}
+.pill a:first-child b{border-bottom:2px solid var(--ink);padding-bottom:2px}
+.pill a small{font-size:.5rem;letter-spacing:.2em;display:block}
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:center;padding-top:8px}
+.who{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.who i{width:46px;height:46px;border-radius:50%;background:var(--btn);display:grid;place-items:center}
+.who i::before{content:"";margin-left:3px;border-left:14px solid var(--btn-ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.who span{font-size:1.02rem;letter-spacing:.02em}
+h1{font-weight:500;font-size:clamp(3.6rem,9.5vw,7.4rem);line-height:.86;letter-spacing:-.06em;margin:0 0 30px;text-transform:uppercase;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+h1 s{display:inline-grid;place-items:center;width:.38em;height:.38em;background:var(--btn);color:var(--btn-ink);border-radius:50%;vertical-align:.12em;margin-left:.12em;box-shadow:0 10px 24px rgba(0,0,0,.25);text-decoration:none}
+h1 s svg{width:52%;height:52%}
+.about{font-style:italic;font-weight:300;color:var(--mute);max-width:42ch;font-size:1.05rem;margin:0 0 28px}
+.about u{font-style:normal;font-weight:500;color:var(--ink);text-decoration-thickness:1px;text-underline-offset:4px;letter-spacing:.03em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:440px;margin-bottom:34px}
+.two h4{margin:0 0 6px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+.two h4::before{content:"";width:5px;height:5px;background:var(--ink);border-radius:50%}
+.two p{margin:0;font-size:.78rem;color:var(--mute);line-height:1.5}
+.acts{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--btn);color:var(--btn-ink);padding:18px 34px;border-radius:12px;text-decoration:none;font-weight:500;font-size:.9rem;box-shadow:0 14px 28px rgba(0,0,0,.22);transition:transform .2s}
+.btn:hover{transform:translateY(-3px)}
+.cv{font-size:.9rem;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px;font-weight:500}
+.photo{position:relative;background:#fff;aspect-ratio:1/1.08;overflow:hidden;border-radius:6px}
+.photo>svg{position:absolute;inset:0;width:100%;height:100%}
+.tile{position:absolute;width:clamp(54px,9vw,82px);aspect-ratio:1;background:#111;color:#fff;border-radius:22%;display:grid;place-items:center;font-weight:700;font-size:clamp(1.1rem,2.4vw,1.7rem);letter-spacing:-.04em}
+.tile svg{width:56%;height:56%}
+.tag{position:absolute;left:12%;bottom:8%;background:#fff;color:#111;padding:10px 14px;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.2);transform:rotate(-12deg);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.4}
+.tag b{display:block;font-size:.78rem}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+/* stats */
+.stats{background:var(--band);color:var(--band-ink);margin-top:48px}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding-top:56px;padding-bottom:56px;text-align:center}
+.stat{padding:8px 10px;border-left:1px solid rgba(128,128,128,.3)}.stat:first-child{border:0}
+.stat svg{width:20px;height:20px;opacity:.5;margin-bottom:18px}
+.stat strong{display:block;font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.05em;line-height:1}
+.stat span{display:block;margin-top:18px;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.5;line-height:1.7}
+.soc{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:18px 0;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mute)}
+.soc nav{display:flex;gap:22px}.soc a{text-decoration:none}.soc a:hover{color:var(--ink)}
+/* narrative */
+.narr{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:clamp(70px,12vw,140px) 0}
+h2{font-weight:500;text-transform:uppercase;letter-spacing:-.05em;line-height:.88;margin:0;font-size:clamp(3rem,8vw,6rem)}
+.narr p{font-style:italic;font-weight:300;color:var(--mute);font-size:1.05rem;max-width:36ch;margin:0 0 26px}
+.btn.s{padding:15px 26px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;border-radius:12px;box-shadow:none}
+/* marquee */
+.mq{background:var(--band);color:var(--band-ink);overflow:hidden;white-space:nowrap;padding:12px 0;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase}
+.mq div{display:inline-block;animation:slide 28s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* reels */
+.reels{padding:clamp(70px,10vw,120px) 0 0}
+.reels h2{text-align:center;margin-bottom:60px}
+.rl{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,5vw,70px);align-items:center;margin-bottom:60px;text-decoration:none}
+.rl:nth-child(odd) .pv{order:2}
+.pv{aspect-ratio:16/10;border-radius:14px;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,hsl(var(--h) 8% 20%),#050505)}
+.pv::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 4px)}
+.pv i{width:62px;height:62px;border-radius:50%;background:#fff;display:grid;place-items:center;z-index:1;transition:transform .2s}
+.pv i::before{content:"";margin-left:5px;border-left:16px solid #111;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.rl:hover .pv i{transform:scale(1.15)}
+.chip{display:inline-block;border:1px solid var(--ink);border-radius:99px;padding:3px 12px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.rl h3{margin:0 0 14px;font-weight:700;font-size:clamp(1.7rem,3.6vw,2.6rem);letter-spacing:-.04em;line-height:1}
+.rl p{margin:0 0 18px;color:var(--mute);max-width:34ch}
+.rl em{font-style:normal;font-size:.85rem;font-weight:500;border-bottom:1px solid var(--ink);padding-bottom:2px}
+/* quote */
+.quote{background:#101010;color:#fff;border-radius:28px;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center;margin-top:30px}
+.quote blockquote{margin:0;font-size:clamp(1.4rem,3.2vw,2.3rem);font-weight:500;letter-spacing:-.04em;line-height:1.1}
+.quote cite{display:block;margin-top:22px;font-style:normal;font-size:.8rem;opacity:.6}
+.av{aspect-ratio:1;max-width:260px;justify-self:center;width:100%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#555,#151515);filter:grayscale(1)}
+/* contact */
+.cta{text-align:center;padding:clamp(80px,12vw,150px) 0 60px}
+.cta h2{font-size:clamp(3rem,10vw,7.5rem)}
+.cta h2 span{display:inline-block;background:var(--btn);color:var(--btn-ink);padding:.02em .22em .08em;border-radius:99px;transform:rotate(-6deg);margin-left:.1em;letter-spacing:-.04em}
+.cta p{color:var(--mute);margin:26px auto 34px;max-width:40ch}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:24px 0 40px;border-top:1px solid var(--line);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mute)}
+@media (max-width:860px){.hero,.narr,.rl,.quote{grid-template-columns:1fr}.rl:nth-child(odd) .pv{order:0}.pill a small{display:none}.pill{padding:8px}.pill a{padding:2px 8px}.stats .wrap{grid-template-columns:1fr 1fr;row-gap:36px}.stat:nth-child(3){border:0}.photo{order:-1}}
+@media (max-width:520px){.pill a:nth-child(n+3){display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="nav">
+  <a class="brand" href="#top"><b>A</b>ALEX RIVERA.</a>
+  <nav class="pill" aria-label="Main">
+    <a href="#reels"><b>Work</b><small>Productions</small></a>
+    <a href="#about"><b>About</b><small>Director</small></a>
+    <a href="#reels"><b>Process</b><small>Workflow</small></a>
+    <a href="#contact"><b>Studio</b><small>Connect</small></a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div>
+    <div class="who"><i></i><div><div class="lbl">Creative director</div><span>Curated by Alex Rivera</span></div></div>
+    <h1>Video<br>Editor <s aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 3v18M16 3v18M3 8h5M3 16h5M16 8h5M16 16h5"/></svg></s></h1>
+    <p class="about">Sculpting cinematic narratives through <u>RHYTHMIC EDITING</u> and advanced post-production choreography for the digital age.</p>
+    <div class="two">
+      <div><h4>Narrative flow</h4><p>Mastering the pace and rhythm to captivate audiences across every frame.</p></div>
+      <div><h4>Visual fidelity</h4><p>High-end color grading and VFX integration for a polished cinematic look.</p></div>
+    </div>
+    <div class="acts"><a class="btn" href="#contact">Start a project</a><a class="cv" href="#">Download CV ↓</a></div>
+  </div>
+  <div class="photo" role="img" aria-label="Portrait of Alex Rivera surrounded by editing tools">
+    <svg viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M120 470 L90 360 L150 300 L120 220 L200 180 L190 110 L270 130 L320 60 L360 120 L440 90 L420 170 L470 230 L430 290 L480 360 L410 400 L430 480 Z" fill="#111"/>
+      <path d="M95 345l-45-18 52 8zM455 215l40-22-34 40zM300 70l20-45 12 50z" fill="#111"/>
+      <path d="M130 540c0-120 40-190 120-200 80 10 120 80 120 200z" fill="#161616" stroke="#fff" stroke-width="3"/>
+      <rect x="226" y="300" width="48" height="50" rx="14" fill="#d6b497"/>
+      <ellipse cx="250" cy="240" rx="62" ry="74" fill="#d6b497"/>
+      <path d="M186 232c-8-70 40-92 70-90 42 2 66 34 56 92-6-30-20-46-54-48-34 2-60 14-72 46z" fill="#161616"/>
+    </svg>
+    <span class="tile" style="left:9%;top:16%;border-radius:18%"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 9h18v11H3zM3 9l2-5 4 1M9 5l4 1M13 6l4 1"/><path d="M10 12l4 2.5-4 2.5z" fill="#fff"/></svg></span>
+    <span class="tile" style="right:7%;top:10%"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M10 9l5 3-5 3z" fill="#fff"/></svg></span>
+    <span class="tile" style="left:4%;top:60%">Pr</span>
+    <span class="tile" style="right:3%;top:66%">Ae</span>
+    <svg style="position:absolute;left:8%;top:38%;width:11%" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 7.5L21 19M8.5 16.5L21 5"/></svg>
+    <svg style="position:absolute;right:6%;top:36%;width:20%" viewBox="0 0 48 24" fill="none" stroke="#111" stroke-width="1.8"><rect x="2" y="9" width="44" height="12" rx="2"/><path d="M12 9v12M24 9v12M36 9v12M24 9V2"/></svg>
+    <div class="tag"><b>Studio</b>Productions</div>
+  </div>
+</section>
+</main>
+</div>
+
+<section class="stats" aria-label="Highlights">
+  <div class="wrap">
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><path d="M8.5 13L7 21l5-3 5 3-1.500-8"/></svg><strong>50K+</strong><span>Minutes of<br>content edited</span></div>
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c0-4 3-6 6.500-6s6.500 2 6.500 6M16 5a3.500 3.500 0 010 7M21.500 20c0-3-1.500-5-4-5.800"/></svg><strong>98%</strong><span>Client<br>satisfaction</span></div>
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h18v11H3zM3 9l2-5 4 1M9 5l4 1M13 6l4 1"/></svg><strong>200+</strong><span>Projects<br>delivered</span></div>
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><strong>10M+</strong><span>Views generated<br>for clients</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="soc"><nav><a href="#">YouTube</a><a href="#">Instagram</a><a href="#">Vimeo</a></nav><a href="mailto:hello@alexrivera.com">hello@alexrivera.com</a></div>
+
+  <section class="narr" id="about">
+    <h2>Narrative<br>precision</h2>
+    <div>
+      <p>Editing is where the story truly begins. I find the heart of a project inside the raw footage and shape it into something that stays with people after the screen goes black.</p>
+      <a class="btn s" href="#reels">Explore full showreel →</a>
+    </div>
+  </section>
+</div>
+
+<div class="mq" aria-hidden="true"><div>COLOR GRADING &nbsp;•&nbsp; MOTION GRAPHICS &nbsp;•&nbsp; SOUND DESIGN &nbsp;•&nbsp; VFX &nbsp;•&nbsp; SHORT-FORM &nbsp;•&nbsp; DOCUMENTARY &nbsp;•&nbsp; COLOR GRADING &nbsp;•&nbsp; MOTION GRAPHICS &nbsp;•&nbsp; SOUND DESIGN &nbsp;•&nbsp; VFX &nbsp;•&nbsp; SHORT-FORM &nbsp;•&nbsp; DOCUMENTARY &nbsp;•&nbsp;</div></div>
+
+<div class="wrap">
+  <section class="reels" id="reels">
+    <h2>Selected<br>reels</h2>
+    <a class="rl" href="#" target="_blank" rel="noopener"><div class="pv" style="--h:20"><i></i></div><div><span class="chip">Short-form</span><h3>Viral high-energy Instagram reels for fashion brands</h3><p>Hook-first cuts, beat-matched transitions and clean captions.</p><em>Watch project →</em></div></a>
+    <a class="rl" href="#" target="_blank" rel="noopener"><div class="pv" style="--h:210"><i></i></div><div><span class="chip">Documentary</span><h3>Cinematic YouTube documentary on the future of tech</h3><p>Interviews, archive and motion graphics shaped into one story.</p><em>Watch project →</em></div></a>
+    <a class="rl" href="#" target="_blank" rel="noopener"><div class="pv" style="--h:330"><i></i></div><div><span class="chip">Shorts</span><h3>Aggressive-hook YouTube Shorts for lifestyle media</h3><p>Weekly turnaround with a strong first two seconds.</p><em>Watch project →</em></div></a>
+
+    <div class="quote">
+      <div><blockquote>“Alex has an incredible eye for narrative rhythm. He doesn’t just edit video, he breathes life into the story.”</blockquote><cite>Client name, Company</cite></div>
+      <div class="av" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>Start a<br>dialogue <span>today</span></h2>
+    <p>Tell me about your footage, your deadline and where it will be shown. I reply within one working day.</p>
+    <a class="btn" href="mailto:hello@alexrivera.com">Send a message</a>
+  </section>
+  <footer><span>© 2026 Alex Rivera</span><span>Available for freelance bookings</span></footer>
+</div>
+</body>
+</html>
